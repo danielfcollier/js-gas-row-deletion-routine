@@ -168,8 +168,5 @@ A successful and efficient routine to delete rows has been developed. Now you ca
 Get a copy of the spreadsheet with the script in it:
 
 https://docs.google.com/spreadsheets/d/1CPm_bUn805n0gjGUeJEmMgvf02gWliRDVCJN8v_AQts/copy
-To get a copy of the clasp project on my github, please visit:
-
-https://github.com/danielfcollier/js-gas-row-deletion-routine
 
 p.s.: the files are in the .js format since they are stored locally and managed using [clasp](https://github.com/google/clasp). Learn how to install clasp [here](https://www.youtube.com/watch?v=4Qlt3p6N0es).
