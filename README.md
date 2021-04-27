@@ -33,7 +33,7 @@ https://docs.google.com/spreadsheets/d/1CPm_bUn805n0gjGUeJEmMgvf02gWliRDVCJN8v_A
 
 Writing down each field column position, we have:
 
-```
+```javascript
 const databasePositions = {
   EmpId: 1,
   FirstName: 2,
@@ -58,7 +58,7 @@ const databasePositions = {
 
 The main routine, i.e., the deletion routine, can just be: 
 
-```
+```javascript
 function deleteRowsRoutine() {
   let [databaseSheet, databaseData] = getDatabase();
  
@@ -71,7 +71,7 @@ function deleteRowsRoutine() {
 
 I will add an extra step just to count how many rows have been deleted: 
  
- ```
+ ```javascript
 function deleteRowsRoutine() {
   let [databaseSheet, databaseData] = getDatabase();
  
@@ -97,7 +97,7 @@ Warning: this might look really simple, but I'm using advanced concepts of Funct
 
 We get the data by reading all the data in the first sheet:
 
-```
+```javascript
 function getDatabase() {
   const databaseSheet = SpreadsheetApp.getActive().getSheets()[0];
   const maxRows = databaseSheet.getMaxRows();
@@ -112,7 +112,7 @@ function getDatabase() {
 
 The deletionRules is a function that is customized with the business logic:
 
-```
+```javascript
 function deletionRules(dataRow) {
   let gender = dataRow[databasePositions.Gender - 1];
   let isBusinessRules = (gender !== 'F');
@@ -130,7 +130,7 @@ For the deletionRowRoutine, we need to also pass the databaseSheet so we can del
 
 Please, note as we reversed the array, we need to also pass the index and the current array to get its length and then get the current row position. The functions return either 1 or 0 to flag if the operation has been successful or failed - it will be helpful to count the number of rows deleted in the execution of the program.
 
-```
+```javascript
 function rowDeletionRoutine(isBusinessRules, index, array) {
   if (isBusinessRules) {
     let rowPosition = array.length - index + 1;
@@ -145,7 +145,7 @@ function rowDeletionRoutine(isBusinessRules, index, array) {
 
 The timer is set to run every day at 6 am. Please, note that running this routine will install the trigger on your Google Apps Script environment, so you should run this function only once, just to install the trigger.
 
-```
+```javascript
 function createTriggersOnce() {
   try {
     ScriptApp.newTrigger('deleteRowsRoutine')
